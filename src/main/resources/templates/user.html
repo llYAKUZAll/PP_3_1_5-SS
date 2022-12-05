@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+</head>
+<body style="padding: 0px">
+
+<div class="example-container" style="padding-left: 15px; background-color: #2c2c2c; ">
+    <div class="row" style="height: 50px; padding-top: 10px">
+
+        <div class="col-sm-auto" style="color: aliceblue">
+            <h4 th:text="${user.getEmail()} + ' with roles:'">Email</h4>
+        </div>
+
+        <div class="col-sm-auto" style="color: aliceblue; padding-left: 0px">
+            <h4>
+                <tr th:each="role : ${user.getRoles()}" th:text="${role.getName().substring(5)}">Role</tr>
+            </h4>
+        </div>
+
+        <div class="col-sm-1" style="padding-top: 5px; margin-left: auto; margin-right: 5px">
+            <h6><a style="color: #a9a9a9" href="/logout">Logout</a></h6>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2" style="height: 1000px; padding-top: 15px; background-color: white; padding-right: 0px">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list"
+               style="color: white"
+               role="tab" aria-controls="profile">User</a>
+        </div>
+    </div>
+    <div class="col-10" style="padding-top: 15px">
+        <div>
+            <div>
+                <div class="col-sm-10">
+                    <h1>User information-page</h1>
+                    <div class="card">
+                        <div class="card-header">
+                            About user
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Age</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th th:text="${user.getId()}">Id</th>
+                                        <td th:text="${user.getName()}">Name</td>
+                                        <td th:text="${user.getSurname()}">Surname</td>
+                                        <td th:text="${user.getAge()}">Age</td>
+                                        <td th:text="${user.getEmail()}">Email</td>
+                                        <td>
+                                            <p th:each="role : ${user.getRoles()}" th:text="${role.getName().substring(5)}">Role</p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
